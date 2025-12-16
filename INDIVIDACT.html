@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="act.css">
+    <title>Activity</title>
+</head>
+<body>
+    
+    <h1>Activity</h1>
+
+    <!-- Country Checker -->
+    <section class="example">
+        <h2>Example — Country Checker (if statement)</h2>
+        <p>Type any country name and click <strong>Check Country</strong>. The script will recognize it automatically.</p>
+
+        <label for="countryInput">Country:</label>
+        <input id="countryInput" type="text" placeholder="Type a country">
+        <button id="checkCountryBtn">Check Country</button>
+
+        <p class="result" id="countryResult" aria-live="polite"></p>
+    </section>
+
+    <!-- Clock Time Checker (Switch) -->
+    <section class="example">
+        <h2>Example — Clock Time Checker (switch)</h2>
+        <p>Type an hour (0–23) and click <strong>Check Time</strong>. The script will tell you if it's morning, afternoon, evening, or night.</p>
+
+        <label for="hourInput">Hour (0–23):</label>
+        <input id="hourInput" type="number" min="0" max="23" placeholder="e.g., 14">
+        <button id="checkHourBtn">Check Time</button>
+
+        <p class="result" id="timeResult" aria-live="polite"></p>
+    </section>
+
+    <!-- Loops Example -->
+<section class="example">
+    <h2>Example — For Loop</h2>
+    <p>Enter a number 1–1000 and click <strong>Count</strong>.</p>
+
+    <label for="numInput">Count up to:</label>
+    <input id="numInput" type="number" min="1" max="1000" placeholder="Please enter your number here!" />
+    <button id="countBtn">Count</button>
+    <button id="clearCount">Clear</button>
+    <p class="result" id="countResult" aria-live="polite"></p>
+</section>
+
+    <!-- JS Scripts -->
+    <script src="SWITCH.js"></script>
+    <script src="loopact.js"></script>
+
+    <!-- Inline JS for country checker -->
+    <script>
+        const countryInput = document.getElementById('countryInput');
+        const checkCountryBtn = document.getElementById('checkCountryBtn');
+        const countryResult = document.getElementById('countryResult');
+
+        const countries = [
+            "Afghanistan","Albania","Algeria","Andorra","Angola","Argentina","Armenia",
+            "Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados",
+            "Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina",
+            "Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia",
+            "Cameroon","Canada","Cape Verde","Central African Republic","Chad","Chile",
+            "China","Colombia","Comoros","Congo","Costa Rica","Croatia","Cuba","Cyprus",
+            "Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador",
+            "Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia",
+            "Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece",
+            "Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hungary",
+            "Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Jamaica",
+            "Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kuwait","Kyrgyzstan","Laos",
+            "Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg",
+            "Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania",
+            "Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco",
+            "Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua",
+            "Niger","Nigeria","North Korea","North Macedonia","Norway","Oman","Pakistan","Palau",
+            "Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland",
+            "Portugal","Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis","Saint Lucia",
+            "Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia",
+            "Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands",
+            "Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname",
+            "Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Togo","Tonga",
+            "Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine",
+            "United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu",
+            "Vatican City","Venezuela","Vietnam","Yemen","Zambia","iZimbabwe"
+        ];
+
+        checkCountryBtn.addEventListener('click', () => {
+            const input = countryInput.value.trim().toLowerCase();
+
+            if (input === "") {
+                countryResult.textContent = "Please type a country name.";
+                countryResult.style.color = "crimson";
+                return;
+            }
+
+            const found = countries.find(c => c.toLowerCase() === input);
+
+            if (found) {
+                countryResult.textContent = `✅ "${found}" is a valid country!`;
+                countryResult.style.color = "green";
+            } else {
+                countryResult.textContent = `❌ "${countryInput.value}" is not recognized as a country.`;
+                countryResult.style.color = "orange";
+            }
+        });
+    </script>
+
+</body>
+</html>
